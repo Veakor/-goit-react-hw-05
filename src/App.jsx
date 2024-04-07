@@ -5,20 +5,19 @@ import MovieDetailsPage from './page/MovieDetailsPage/MovieDetailsPage';
 import NotFoundPage from './page/NotFoundPage/NotFoundPage';
 
 
-const App = () => {
+function App() {
   return (
     <Router>
       <div>
-        {}
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/movies" component={MoviesPage} />
-          <Route path="/movies/:movieId" component={MovieDetailsPage} />
+          <Route exact path="/movies/:movieId" component={MovieDetailsPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>
     </Router>
   );
-};
+}
 
 export default App;
