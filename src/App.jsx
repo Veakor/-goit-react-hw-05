@@ -1,4 +1,32 @@
-import { BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./page/HomePage/HomePage";
+import MoviesPage from './page/MoviesPage/MoviesPage';
+import NotFoundPage from './page/NotFoundPage/NotFoundPage';
+import MovieDetailsPage from "./page/MovieDetailsPage/MovieDetailsPage";
+
+
+function App() {
+  return (
+  
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:moviesId/*" element={<MovieDetailsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+{/*import { BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import HomePage from './page/HomePage/HomePage';
 import MoviesPage from './page/MoviesPage/MoviesPage';
@@ -31,4 +59,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;*/}

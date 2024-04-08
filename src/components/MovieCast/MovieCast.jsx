@@ -1,34 +1,99 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+
+import { getMovieCast } from "../../sevices/API";
+
 
 const MovieCast = () => {
-  const { movieId } = useParams();
-  const [cast, setCast] = useState([]);
+  const { moviesId } = useParams();
+  const [movieCast, setMovieCast] = useState([]);
 
   useEffect(() => {
-    const fetchCast = async () => {
+    async function getInfoMoviesCast() {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=YOUR_API_KEY`);
-        const data = await response.json();
-        setCast(data.cast);
+        const data = await getMovieCast(moviesId);
+        setMovieCast(data.cast);
       } catch (error) {
-        console.error('Error fetching cast:', error);
+        console.log("error: ", error);
+      } finally {
+        console.log();
       }
-    };
+    }
 
-    fetchCast();
+    getInfoMoviesCast();
+  }, [moviesId]);
+
+  return (
+    <ul >
+      {Array.isArray(movieCast) &&
+        movieCast.map((item) => {
+          return (
+            <li key={item.id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
+                alt=""
+              />
+              <p>{item.name}</p>
+            </li>
+          );
+        })}
+    </ul>
+  );
+};
+export default MovieCast;
+
+
+
+
+
+
+
+
+
+
+
+
+{/*import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+
+const MovieCast = () => {
+  const { movieId } = useParams(); 
+  const [movieCast,] = useState([]);
+
+  useEffect(() => {
+    async function getInfoMoviesCast() {
+      try {
+        const data = await (movieId);
+      (data.cast);
+      } catch (error) {
+        console.log("error: ", error);
+      } finally {
+        console.log();
+      }
+    }
+
+    getInfoMoviesCast();
   }, [movieId]);
 
   return (
-    <div>
-      <h2>Cast</h2>
-      <ul>
-        {cast.map(actor => (
-          <li key={actor.id}>{actor.name}</li>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {Array.isArray(movieCast) &&
+        movieCast.map((item) => {
+          return (
+            <li key={item.id}>
+              <img
+                
+                src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
+                alt=""
+              />
+              <p >{item.name}</p>
+            </li>
+          );
+        })}
+    </ul>
   );
 };
 
-export default MovieCast;
+export default MovieCast;*/}

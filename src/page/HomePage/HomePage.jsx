@@ -1,4 +1,30 @@
-import { useState, useEffect } from 'react';
+import { NavLink } from "react-router-dom";
+import { useListMovies } from "../../hooks/useListMovies";
+
+const HomePage = () => {
+  const { topMovies } = useListMovies();
+
+  return (
+    <div >
+      <h1>Trending today</h1>
+      <ul >
+        {Array.isArray(topMovies) &&
+          topMovies.map((item) => {
+            return (
+              <li key={item.id}>
+                <NavLink to={`/movies/${item.id}`}>{item.title}</NavLink>
+              </li>
+            );
+          })}
+      </ul>
+    </div>
+  );
+};
+
+export default HomePage;
+
+
+{/*import { useState, useEffect } from 'react';
 import MovieList from '../MovieList/MovieList';
 
 const HomePage = () => {
@@ -42,4 +68,4 @@ const HomePage = () => {
   );
 }
 
-export default HomePage;
+export default HomePage;*/}

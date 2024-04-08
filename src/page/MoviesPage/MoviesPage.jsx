@@ -1,5 +1,67 @@
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { toast, Toaster } from "react-hot-toast";
 
-import { useState, useEffect } from 'react';
+const MoviesPage = () => {
+  const [showList, setShowList] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const { search } = form.elements;
+    if (search.value.length === 0) {
+      toast.error("The input field is empty! Please write a word to search.", {
+        icon: "...",
+      });
+    } else {
+      setShowList(search.value);
+    }
+  };
+
+  useEffect(() => {
+    async function getListMovies() {
+      if (showList.length === 0) return;
+   
+    }
+
+    getListMovies();
+  }, [showList]);
+
+  return (
+    <>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="search"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search films and movies"
+          />
+          <button type="submit">Search</button>
+        </form>
+        <Toaster position="top-right" reverseOrder={false} />
+      </div>
+      <div>
+        <ul>
+          {Array.map((item) => {
+              return (
+                <li key={item.id}>
+                  <NavLink to={`${item.id}`}>{item.title}</NavLink>
+                </li>
+              );
+            })}
+        </ul>
+      </div>
+    </>
+  );
+};
+
+export default MoviesPage
+
+
+
+{/*import { useState, useEffect } from 'react';
 import MovieList from '../MovieList/MovieList';
 import axios from 'axios';
 
@@ -43,4 +105,4 @@ const MoviesPage = () => {
   );
 };
 
-export default MoviesPage;
+export default MoviesPage;*/}
