@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 
 import MovieCast from "../../components/MovieCast/MovieCast";
 import MovieReviews from "../../components/MovieReviews/MovieReviews";
-import { getDetailsMovies } from "../../sevices/API";
+import { getDetailsMovies } from "..//../servic/API";
 
 
 const MovieDetailsPage = () => {

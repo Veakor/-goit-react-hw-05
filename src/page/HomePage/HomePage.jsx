@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { useListMovies } from "../../hooks/useListMovies";
+import { MovieList } from "../MovieList/MovieList";
 
 const HomePage = () => {
-  const { topMovies } = useListMovies();
+  const { topMovies } = MovieList();
 
   return (
     <div >

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 
-import { getMovieCast } from "../../sevices/API";
+import { getMovieCast } from "..//../servic/API";
 
 
 const MovieCast = () => {
