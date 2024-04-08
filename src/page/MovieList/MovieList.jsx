@@ -35,6 +35,22 @@ export const MoviesList = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {/*import { Link } from 'react-router-dom';
 
 const MovieList = ({ movies }) => {
