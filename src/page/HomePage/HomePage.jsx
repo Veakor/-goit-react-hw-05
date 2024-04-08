@@ -22,6 +22,7 @@ const HomePage = () => {
         const data = await response.json();
         setMovies(data.results);
       } catch (error) {
+        console.error('Error fetching movies:', error);
         setError(error.message);
       } finally {
         setLoading(false);
@@ -34,12 +35,12 @@ const HomePage = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  
   return (
     <div>
       <header>
-      <h1>Home</h1>
+        <h1>Home</h1>
       </header>
+      <MovieList movies={movies} />
     </div>
   );
 }
