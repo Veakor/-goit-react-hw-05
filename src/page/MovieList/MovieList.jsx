@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTrendMovies } from "../../servic/API";
 
-export const MoviesList = () => {
+const MoviesList = () => {
   const [topMovies, setTopMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,10 +33,7 @@ export const MoviesList = () => {
   );
 };
 
-
-
-
-
+export default MoviesList;
 
 
 
