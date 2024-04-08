@@ -4,6 +4,7 @@ import { toast, Toaster } from "react-hot-toast";
 
 const MoviesPage = () => {
   const [showList, setShowList] = useState("");
+  const [movies, setMovies] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,7 +22,9 @@ const MoviesPage = () => {
   useEffect(() => {
     async function getListMovies() {
       if (showList.length === 0) return;
-   
+      const response = await fetch(`Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MDk5NDJiOWNiOTMzMWQzYjU4MGE5YzU1NDgwMTdmNCIsInN1YiI6IjY2MTJkZTMxMDQ4NjM4MDE2MzE5NjY0ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aIQgtNvQ_0iJJPekOo952avB3e-1LwgBmjDHRulmb-w"`);
+      const data = await response.json();
+      setMovies(data.results);
     }
 
     getListMovies();
@@ -36,28 +39,26 @@ const MoviesPage = () => {
             name="search"
             autoComplete="off"
             autoFocus
-            placeholder="Search films and movies"
+            placeholder="Поиск фильмов"
           />
-          <button type="submit">Search</button>
+          <button type="submit">Искать</button>
         </form>
         <Toaster position="top-right" reverseOrder={false} />
       </div>
       <div>
         <ul>
-          {Array.map((item) => {
-              return (
-                <li key={item.id}>
-                  <NavLink to={`${item.id}`}>{item.title}</NavLink>
-                </li>
-              );
-            })}
+          {movies.map((item) => (
+            <li key={item.id}>
+              <NavLink to={`${item.id}`}>{item.title}</NavLink>
+            </li>
+          ))}
         </ul>
       </div>
     </>
   );
 };
 
-export default MoviesPage
+export default MoviesPage;
 
 
 
