@@ -1,11 +1,11 @@
-import { useEffect, useRef } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
+import { useEffect} from 'react';
+import { useParams, Link } from 'react-router-dom';
 import MovieReviews from '../../components/MovieReviews/MovieReviews';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  const location = useLocation();
-  const backLink = useRef(location.state?.from || '/');
+
+
 
   useEffect(() => {
     const options = {
@@ -28,7 +28,8 @@ const MovieDetailsPage = () => {
       {}
       <MovieReviews />
       {}
-      <Link to={backLink.current}>Go Back</Link>
+      <Link to={`/movies/${movieId}/cast`}>Cast</Link> 
+      <Link to={`/movies/${movieId}/reviews`}>Reviews</Link> 
     </div>
   );
 };

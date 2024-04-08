@@ -5,6 +5,8 @@ import MoviesPage from './page/MoviesPage/MoviesPage';
 import MovieDetailsPage from './page/MovieDetailsPage/MovieDetailsPage';
 import NotFoundPage from './page/NotFoundPage/NotFoundPage';
 import style from "./App.module.css";
+import MovieCast from './components/MovieCast/MovieCast';
+import MovieReviews from './components/MovieReviews/MovieReviews';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
+          <Route path="/movies/:movieId/cast" element={<MovieCast />} /> 
+          <Route path="/movies/:movieId/reviews" element={<MovieReviews />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
