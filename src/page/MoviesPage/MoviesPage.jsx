@@ -22,7 +22,7 @@ const MoviesPage = () => {
   useEffect(() => {
     async function getListMovies() {
       if (showList.length === 0) return;
-      const response = await fetch(`https://api.themoviedb.org/3/movies?api_key=909942b9cb9331d3b580a9c5548017f4`, {
+      const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=909942b9cb9331d3b580a9c5548017f4`, {
         method: "GET",
         headers: {
           Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MDk5NDJiOWNiOTMzMWQzYjU4MGE5YzU1NDgwMTdmNCIsInN1YiI6IjY2MTJkZTMxMDQ4NjM4MDE2MzE5NjY0ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aIQgtNvQ_0iJJPekOo952avB3e-1LwgBmjDHRulmb-w"
