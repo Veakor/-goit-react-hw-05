@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import MovieReviews from '../../components/MovieReviews/MovieReviews';
 
-
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const location = useLocation();
@@ -27,7 +26,8 @@ const MovieDetailsPage = () => {
     <div>
       <h1>Movie Details Page</h1>
       {}
-      <MovieReviews /> {}
+      <MovieReviews />
+      {}
       <Link to={backLink.current}>Go Back</Link>
     </div>
   );
