@@ -4,9 +4,8 @@ import MovieList from '../MovieList/MovieList';
 const HomePage = () => {
   const [movies] = useState([]);
 
-  // Отримання списку фільмів під час завантаження сторінки
   useEffect(() => {
-    // Ваш код для отримання списку фільмів
+   
   }, []);
 
   return (

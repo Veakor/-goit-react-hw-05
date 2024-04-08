@@ -6,6 +6,7 @@ import MovieDetailsPage from './page/MovieDetailsPage/MovieDetailsPage';
 import NotFoundPage from './page/NotFoundPage/NotFoundPage';
 
 
+
 function App() {
   return (
     <Router>
