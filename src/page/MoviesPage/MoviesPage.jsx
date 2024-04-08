@@ -9,10 +9,9 @@ const MoviesPage = () => {
   
 
   useEffect(() => {
-    const apiKey = '909942b9cb9331d3b580a9c5548017f4';
     axios.get('https://api.themoviedb.org/3/trending/movie/day', {
       headers: {
-        Authorization: `Bearer ${apiKey}`
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MDk5NDJiOWNiOTMzMWQzYjU4MGE5YzU1NDgwMTdmNCIsInN1YiI6IjY2MTJkZTMxMDQ4NjM4MDE2MzE5NjY0ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aIQgtNvQ_0iJJPekOo952avB3e-1LwgBmjDHRulmb-w`
       }
     })
     .then(response => {

@@ -37,9 +37,6 @@ const HomePage = () => {
 
   return (
     <div>
-      <header>
-        <h1>Home</h1>
-      </header>
       <MovieList movies={movies} />
     </div>
   );
