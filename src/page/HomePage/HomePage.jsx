@@ -15,7 +15,7 @@ const HomePage = () => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: 'Bearer 909942b9cb9331d3b580a9c5548017f4',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MDk5NDJiOWNiOTMzMWQzYjU4MGE5YzU1NDgwMTdmNCIsInN1YiI6IjY2MTJkZTMxMDQ4NjM4MDE2MzE5NjY0ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aIQgtNvQ_0iJJPekOo952avB3e-1LwgBmjDHRulmb-w',
             },
           }
         );
@@ -34,12 +34,14 @@ const HomePage = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  
   return (
     <div>
-      <h1>Home Page</h1>
-      <MovieList movies={movies} />
+      <header>
+      <h1>Home</h1>
+      </header>
     </div>
   );
-};
+}
 
 export default HomePage;
