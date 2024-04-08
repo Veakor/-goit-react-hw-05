@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
-import MovieReviews from '';
+import MovieReviews from '../';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
