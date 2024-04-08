@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom';
+
 import { useState, useEffect } from 'react';
 import MovieList from '../MovieList/MovieList';
 import axios from 'axios';
@@ -6,7 +6,7 @@ import axios from 'axios';
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const history = useHistory();
+  
 
   useEffect(() => {
     const apiKey = '909942b9cb9331d3b580a9c5548017f4';

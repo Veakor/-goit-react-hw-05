@@ -13,10 +13,10 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/movies" component={MoviesPage} />
-          <Route exact path="/movies/:movieId" component={MovieDetailsPage} />
-          <Route component={NotFoundPage} />
+          <Route path="/" element={<HomePage/>} />
+          <Route path="/movies" element={<MoviesPage/>} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage/>} />
+          <Route element={<NotFoundPage/>} />
         </Routes>
       </div>
     </Router>

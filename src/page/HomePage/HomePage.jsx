@@ -15,7 +15,7 @@ const HomePage = () => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: 'Bearer your_access_token_here',
+              Authorization: 'Bearer 909942b9cb9331d3b580a9c5548017f4',
             },
           }
         );
