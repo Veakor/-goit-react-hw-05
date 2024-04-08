@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
+import MovieReviews from './MovieReviews';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -24,7 +25,8 @@ const MovieDetailsPage = () => {
   return (
     <div>
       <h1>Movie Details Page</h1>
-      {/* Ваш код для отображения деталей фильма */}
+      {}
+      <MovieReviews /> {}
       <Link to={backLink.current}>Go Back</Link>
     </div>
   );
