@@ -5,11 +5,11 @@ import { getMovieReviews } from "..//../servic/API";
 const MovieReviews = () => {
   const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState([]);
-  
- 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function getInfoMoviesReviews() {
+    async function fetchMovieReviews() {
       try {
         const options = {
           method: 'GET',
@@ -20,28 +20,38 @@ const MovieReviews = () => {
         };
         const data = await getMovieReviews(movieId, options);
         setMovieReviews(data.results);
+        setLoading(false);
       } catch (error) {
-        console.log("error: ", error);
+        setError(error.message);
+        setLoading(false);
       }
     }
 
-    getInfoMoviesReviews();
+    fetchMovieReviews();
   }, [movieId]);
 
+  if (loading) return <div>Loading reviews...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
-    <ul>
-      {movieReviews.map((review) => (
-        <li key={review.id}>
-          <p>Author: {review.author}</p>
-          <p>{review.content}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      {movieReviews.length === 0 ? (
+        <div>No reviews available for this movie.</div>
+      ) : (
+        <ul>
+          {movieReviews.map((review) => (
+            <li key={review.id}>
+              <p>Author: {review.author}</p>
+              <p>{review.content}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
 
 export default MovieReviews;
-
 
 
 

@@ -1,13 +1,14 @@
 
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import  { useEffect, useState } from "react";
+import {  useSearchParams } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
+import MovieList from "./MovieList";
 
 const MoviesPage = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const { search } = form.elements;
@@ -16,13 +17,14 @@ const MoviesPage = () => {
         icon: "...",
       });
     } else {
-      setSearchTerm(search.value);
+      setSearchParams({ query: search.value });
     }
   };
 
   useEffect(() => {
     async function searchMovies() {
-      if (searchTerm.length === 0) return;
+      const query = searchParams.get("query");
+      if (!query) return;
       const options = {
         method: "GET",
         headers: {
@@ -35,7 +37,7 @@ const MoviesPage = () => {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=${encodeURIComponent(
-            searchTerm
+            query
           )}`,
           options
         );
@@ -47,7 +49,7 @@ const MoviesPage = () => {
     }
 
     searchMovies();
-  }, [searchTerm]);
+  }, [searchParams]);
 
   return (
     <>
@@ -65,35 +67,13 @@ const MoviesPage = () => {
         <Toaster position="top-right" reverseOrder={false} />
       </div>
       <div>
-        <ul>
-          {movies.map((item) => (
-            <li key={item.id}>
-              <NavLink to={`${item.id}`}>{item.title}</NavLink>
-            </li>
-          ))}
-        </ul>
+        <MovieList movies={movies} />
       </div>
     </>
   );
 };
 
 export default MoviesPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

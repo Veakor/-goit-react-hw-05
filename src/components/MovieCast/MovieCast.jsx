@@ -1,57 +1,44 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieCast } from "..//../servic/API";
+import { getMovieCast } from "../../services/API";
 
 const MovieCast = () => {
   const { movieId } = useParams();
-  const [movieCast, setMovieCast] = useState([]);
+  const [cast, setCast] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function getInfoMoviesCast() {
+    async function fetchMovieCast() {
       try {
-        const options = {
-          method: 'GET',
-          headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MDk5NDJiOWNiOTMzMWQzYjU4MGE5YzU1NDgwMTdmNCIsInN1YiI6IjY2MTJkZTMxMDQ4NjM4MDE2MzE5NjY0ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aIQgtNvQ_0iJJPekOo952avB3e-1LwgBmjDHRulmb-w'
-          }
-        };
-        const data = await getMovieCast(movieId, options);
-        setMovieCast(data.cast);
+        const data = await getMovieCast(movieId);
+        setCast(data);
+        setLoading(false);
       } catch (error) {
-        console.log("error: ", error);
+        setError(error.message);
+        setLoading(false);
       }
     }
 
-    getInfoMoviesCast();
+    fetchMovieCast();
   }, [movieId]);
 
+  if (loading) return <div>Loading cast...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
-    <ul>
-      {movieCast.map((item) => (
-            <li key={item.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
-                alt={item.name}
-              />
-              <p>{item.name}</p>
-            </li>
-          ))}
-    </ul>
+    <div>
+      <h2>Cast</h2>
+      <ul>
+        {cast.map(actor => (
+          <li key={actor.id}>{actor.name}</li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
 export default MovieCast;
-
-
-
-
-
-
-
-
-
-
 
 
 

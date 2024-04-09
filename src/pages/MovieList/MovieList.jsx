@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { getTrendMovies } from "../../../servic/API";
-import { Link} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const MoviesList = () => {
   const [topMovies, setTopMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     async function fetchTopMovies() {
@@ -30,7 +31,10 @@ const MoviesList = () => {
       <ul>
       {topMovies.map(movie => (
         <li key={movie.id}>
-          <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+          <Link to={{
+            pathname: `/movies/${movie.id}`,
+            state: { from: location }
+          }}>{movie.title}</Link>
         </li>
       ))}
       </ul>
