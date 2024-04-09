@@ -1,5 +1,102 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getMovieReviews } from "..//../servic/API";
+
+const MovieReviews = () => {
+  const { moviesId } = useParams();
+  const [movieReviews, setMovieReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+ 
+
+  useEffect(() => {
+    async function fetchMovieReviews() {
+      try {
+        const reviews = await getMovieReviews(moviesId);
+        setMovieReviews(reviews);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
+    }
+
+    fetchMovieReviews();
+  }, [moviesId]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      {movieReviews.length === 0 ? (
+        <p>We do not have any reviews for this movie</p>
+      ) : (
+        <ul>
+          {movieReviews.map((review, index) => (
+            <li key={index}>
+              <h3>{review.author}</h3>
+              <p>{review.content}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export default MovieReviews;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/*import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 
 import { getMovieReviews } from "..//../servic/API";
@@ -43,7 +140,7 @@ const MovieReviews = () => {
     </div>
   );
 };
-export default MovieReviews;
+export default MovieReviews;*/}
 
 
 
