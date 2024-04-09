@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+{/*import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieCast } from "..//../servic/API";
 
@@ -41,7 +41,7 @@ const MovieCast = () => {
   );
 };
 
-export default MovieCast;
+export default MovieCast;*/}
 
 
 
@@ -108,7 +108,7 @@ export default MovieCast;
 
 
 
-{/*import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 
@@ -151,7 +151,7 @@ const MovieCast = () => {
     </ul>
   );
 };
-export default MovieCast;*/}
+export default MovieCast;
 
 
 
