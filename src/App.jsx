@@ -8,6 +8,8 @@ const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage/MovieDetail
 
 
 
+
+
 const App = () => {
   return (
     <Router>

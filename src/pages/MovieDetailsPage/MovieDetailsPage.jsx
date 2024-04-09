@@ -69,8 +69,8 @@ const MovieDetailsPage = () => {
       
       <Outlet />
       <Suspense fallback={<div>Loading...</div>}>
-        <Route path={`${movieId}/cast`} element={<MovieCast />} />
-        <Route path={`${movieId}/reviews`} element={<MovieReviews />} />
+      <Route path="cast" element={<MovieCast />} />
+      <Route path="reviews" element={<MovieReviews />} />
       </Suspense>
     </div>
    
