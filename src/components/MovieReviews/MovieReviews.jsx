@@ -3,44 +3,40 @@ import { useParams } from "react-router-dom";
 import { getMovieReviews } from "..//../servic/API";
 
 const MovieReviews = () => {
-  const { moviesId } = useParams();
+  const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  
  
 
   useEffect(() => {
-    async function fetchMovieReviews() {
+    async function getInfoMoviesReviews() {
       try {
-        const reviews = await getMovieReviews(moviesId);
-        setMovieReviews(reviews);
-        setIsLoading(false);
+        const options = {
+          method: 'GET',
+          headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MDk5NDJiOWNiOTMzMWQzYjU4MGE5YzU1NDgwMTdmNCIsInN1YiI6IjY2MTJkZTMxMDQ4NjM4MDE2MzE5NjY0ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aIQgtNvQ_0iJJPekOo952avB3e-1LwgBmjDHRulmb-w'
+          }
+        };
+        const data = await getMovieReviews(movieId, options);
+        setMovieReviews(data.results);
       } catch (error) {
-        setIsLoading(false);
+        console.log("error: ", error);
       }
     }
 
-    fetchMovieReviews();
-  }, [moviesId]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+    getInfoMoviesReviews();
+  }, [movieId]);
 
   return (
-    <div>
-      {movieReviews.length === 0 ? (
-        <p>We do not have any reviews for this movie</p>
-      ) : (
-        <ul>
-          {movieReviews.map((review, index) => (
-            <li key={index}>
-              <h3>{review.author}</h3>
-              <p>{review.content}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <ul>
+      {movieReviews.map((review) => (
+        <li key={review.id}>
+          <p>Author: {review.author}</p>
+          <p>{review.content}</p>
+        </li>
+      ))}
+    </ul>
   );
 };
 

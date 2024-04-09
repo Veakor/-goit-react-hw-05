@@ -28,18 +28,15 @@ const MovieCast = () => {
 
   return (
     <ul>
-      {Array.isArray(movieCast) &&
-        movieCast.map((item) => {
-          return (
+      {movieCast.map((item) => (
             <li key={item.id}>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
-                alt=""
+                alt={item.name}
               />
               <p>{item.name}</p>
             </li>
-          );
-        })}
+          ))}
     </ul>
   );
 };

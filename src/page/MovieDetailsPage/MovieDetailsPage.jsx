@@ -23,7 +23,7 @@ const MovieDetailsPage = () => {
 
     getItemMovies();
   }, [movieId]);
-
+// Рендеринг содержимого страницы
   return (
     <div>
       <Link to={backLinkRef.current}>
@@ -63,8 +63,8 @@ const MovieDetailsPage = () => {
         </ul>
       </div>
       <Routes>
-        <Route path={`${movieId}/cast`} element={<MovieCast />} />
-        <Route path={`${movieId}/reviews`} element={<MovieReviews />} />
+      <Route path="cast" element={<MovieCast />} />
+      <Route path="reviews" element={<MovieReviews />} />
       </Routes>
     </div>
   );
