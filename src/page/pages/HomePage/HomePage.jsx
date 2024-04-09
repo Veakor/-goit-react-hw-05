@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import  MovieList  from "../MovieList/MovieList";
+import  MovieList  from "../../page/pages/MovieList/MovieList";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
