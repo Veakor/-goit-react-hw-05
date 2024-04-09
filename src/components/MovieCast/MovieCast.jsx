@@ -31,7 +31,7 @@ const MovieCast = () => {
       {movieCast.map((item) => (
             <li key={item.id}>
               <img
-                src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
+                src={`https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg`}
                 alt={item.name}
               />
               <p>{item.name}</p>
