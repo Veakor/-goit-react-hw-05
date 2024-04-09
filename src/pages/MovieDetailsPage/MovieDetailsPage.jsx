@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams, useLocation, Outlet } from "react-router-dom";
+import { Link, useParams, useLocation, Routes, Route, Outlet } from "react-router-dom";
 import { getDetailsMovies } from "..//../servic/API";
-
+import MovieCast from "../../components/MovieCast/MovieCast";
+import MovieReviews from "../../components/MovieReviews/MovieReviews";
 
 const MovieDetailsPage = () => {
   const [itemCardMovie, setItemCardMovie] = useState({});
@@ -56,12 +57,22 @@ const MovieDetailsPage = () => {
             <Link to={`${movieId}/cast`}>Cast</Link>
           </li>
           <li>
+          
+          </li>
+          <li>
             <Link to={`${movieId}/reviews`}>Reviews</Link>
           </li>
+          
         </ul>
       </div>
+      
       <Outlet />
+      <Routes>
+      <Route path="/movies/:movieId/cast" element={<MovieCast />} /> 
+          <Route path="/movies/:movieId/reviews" element={<MovieReviews />} />
+      </Routes>
     </div>
+   
   );
 };
 
