@@ -1,24 +1,36 @@
-import { Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { Routes } from 'react-router-dom';
 import HomePage from "./page/HomePage/HomePage";
 import MoviesPage from "./page/MoviesPage/MoviesPage";
 import NotFoundPage from './page/NotFoundPage/NotFoundPage';
 import MovieDetailsPage from "./page/MovieDetailsPage/MovieDetailsPage";
+import MovieCast from './components/MovieCast/MovieCast';
+import MovieReviews from './components/MovieReviews/MovieReviews';
 
 
 function App() {
   return (
-  
-      <main>
+    
+    <Router>
+      <div>
+        <header>
+          <nav >
+          <NavLink  to='/'>Home</NavLink>
+          <NavLink  to="/movies">Movies</NavLink>
+          </nav>
+        </header>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movies/:moviesId/*" element={<MovieDetailsPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
+          <Route path="/movies/:movieId/cast" element={<MovieCast />} /> 
+          <Route path="/movies/:movieId/reviews" element={<MovieReviews />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </main>
+      </div>
+    </Router>
   );
 }
-
 export default App;
 
 
