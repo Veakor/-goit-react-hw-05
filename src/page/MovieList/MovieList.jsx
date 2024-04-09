@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTrendMovies } from "../../servic/API";
+import { Link} from "react-router-dom";
 
 const MoviesList = () => {
   const [topMovies, setTopMovies] = useState([]);
@@ -26,9 +27,13 @@ const MoviesList = () => {
 
   return (
     <div>
+      <ul>
       {topMovies.map(movie => (
-        <div key={movie.id}>{movie.title}</div>
+        <li key={movie.id}>
+          <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+        </li>
       ))}
+      </ul>
     </div>
   );
 };

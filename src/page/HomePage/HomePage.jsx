@@ -1,31 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 import  MovieList  from "../MovieList/MovieList";
-
-const HomePage = () => {
-  const { topMovies } = MovieList();
-
-  return (
-    <div >
-      <h1>Trending today</h1>
-      <ul >
-        {Array.isArray(topMovies) &&
-          topMovies.map((item) => {
-            return (
-              <li key={item.id}>
-                <NavLink to={`/movies/${item.id}`}>{item.title}</NavLink>
-              </li>
-            );
-          })}
-      </ul>
-    </div>
-  );
-};
-
-export default HomePage;
-
-
-{/*import { useState, useEffect } from 'react';
-import MovieList from '../MovieList/MovieList';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -68,4 +42,68 @@ const HomePage = () => {
   );
 }
 
-export default HomePage;*/}
+export default HomePage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/*import { NavLink } from "react-router-dom";
+const HomePage = () => {
+  const { topMovies } = MovieList();
+
+  return (
+    <div >
+      <h1>Trending today</h1>
+      <ul >
+        {Array.isArray(topMovies) &&
+          topMovies.map((item) => {
+            return (
+              <li key={item.id}>
+                <NavLink to={`/movies/${item.id}`}>{item.title}</NavLink>
+              </li>
+            );
+          })}
+      </ul>
+    </div>
+  );
+};
+
+export default HomePage;
+
+
+{/*i
+
+*/}
