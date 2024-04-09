@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams, useLocation, Routes, Route, Outlet } from "react-router-dom";
+import { Link, useParams, useLocation, Route, Outlet } from "react-router-dom";
 import { getDetailsMovies } from "..//../servic/API";
-import MovieCast from "../../components/MovieCast/MovieCast";
-import MovieReviews from "../../components/MovieReviews/MovieReviews";
+const MovieCast = lazy(() => import("../../components/MovieCast/MovieCast"));
+const MovieReviews = lazy(() => import("../../components/MovieReviews/MovieReviews"));
+import { Suspense, lazy } from 'react';
 
 const MovieDetailsPage = () => {
   const [itemCardMovie, setItemCardMovie] = useState({});
@@ -67,10 +68,10 @@ const MovieDetailsPage = () => {
       </div>
       
       <Outlet />
-      <Routes>
-      <Route path="/movies/:movieId/cast" element={<MovieCast />} /> 
-          <Route path="/movies/:movieId/reviews" element={<MovieReviews />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Route path={`${movieId}/cast`} element={<MovieCast />} />
+        <Route path={`${movieId}/reviews`} element={<MovieReviews />} />
+      </Suspense>
     </div>
    
   );
