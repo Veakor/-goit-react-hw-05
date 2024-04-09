@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams, useLocation, Routes, Route } from "react-router-dom";
+import { Link, useParams, useLocation, Outlet } from "react-router-dom";
 import { getDetailsMovies } from "..//../servic/API";
-import MovieCast from "../../components/MovieCast/MovieCast";
-import MovieReviews from "../../components/MovieReviews/MovieReviews";
+
 
 const MovieDetailsPage = () => {
   const [itemCardMovie, setItemCardMovie] = useState({});
@@ -61,10 +60,7 @@ const MovieDetailsPage = () => {
           </li>
         </ul>
       </div>
-      <Routes>
-        <Route path={`${movieId}/cast`} element={<MovieCast />} />
-        <Route path={`${movieId}/reviews`} element={<MovieReviews />} />
-      </Routes>
+      <Outlet />
     </div>
   );
 };
