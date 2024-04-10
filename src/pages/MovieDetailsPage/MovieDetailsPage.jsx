@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams, useLocation, Route, Outlet } from "react-router-dom";
+import { Link, useParams, useLocation, Route,Routes, Outlet } from "react-router-dom";
 import { getDetailsMovies } from "..//../servic/API";
 const MovieCast = lazy(() => import("../../components/MovieCast/MovieCast"));
 const MovieReviews = lazy(() => import("../../components/MovieReviews/MovieReviews"));
@@ -68,10 +68,14 @@ const MovieDetailsPage = () => {
       </div>
       
       <Outlet />
+
       <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
       <Route path="cast" element={<MovieCast />} />
       <Route path="reviews" element={<MovieReviews />} />
+      </Routes>
       </Suspense>
+
     </div>
    
   );
