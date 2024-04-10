@@ -2,7 +2,8 @@
 import  { useEffect, useState } from "react";
 import {  useSearchParams } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
-import MovieList from "./MovieList";
+import MovieList from "../../components/MovieList/MovieList";
+
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -22,8 +23,8 @@ const MoviesPage = () => {
   };
 
   useEffect(() => {
-    async function searchMovies() {
-      const query = searchParams.get("query");
+    const query = searchParams.get("query");
+     async function searchMovies() {
       if (!query) return;
       const options = {
         method: "GET",

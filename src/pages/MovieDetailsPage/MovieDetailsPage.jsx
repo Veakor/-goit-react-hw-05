@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams, useLocation, Route,Routes, Outlet } from "react-router-dom";
-import { getDetailsMovies } from "..//../servic/API";
-const MovieCast = lazy(() => import("../../components/MovieCast/MovieCast"));
-const MovieReviews = lazy(() => import("../../components/MovieReviews/MovieReviews"));
-import { Suspense, lazy } from 'react';
+import { Link, useParams, useLocation, Outlet } from "react-router-dom";
+import { getDetailsMovies } from "../../servic/API";
+import { Suspense} from 'react';
 
 const MovieDetailsPage = () => {
   const [itemCardMovie, setItemCardMovie] = useState({});
@@ -55,27 +53,17 @@ const MovieDetailsPage = () => {
         <h3>Additional information:</h3>
         <ul>
           <li>
-            <Link to={`${movieId}/cast`}>Cast</Link>
+            <Link to={`cast`}>Cast</Link>
           </li>
           <li>
-          
+            <Link to={`reviews`}>Reviews</Link>
           </li>
-          <li>
-            <Link to={`${movieId}/reviews`}>Reviews</Link>
-          </li>
-          
-        </ul>
+           </ul>
       </div>
       
+    <Suspense fallback={<div>Loading...</div>}>
       <Outlet />
-
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-      <Route path="cast" element={<MovieCast />} />
-      <Route path="reviews" element={<MovieReviews />} />
-      </Routes>
       </Suspense>
-
     </div>
    
   );

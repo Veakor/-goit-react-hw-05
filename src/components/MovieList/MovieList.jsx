@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTrendMovies } from "..//../servic/API";
+import { getTrendMovies } from "../../servic/API";
 import { Link, useLocation } from "react-router-dom";
 
 const MoviesList = () => {
